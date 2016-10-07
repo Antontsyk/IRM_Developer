@@ -1,0 +1,35 @@
+// ----
+// Sass (v3.3.6)
+// Compass (v)
+// Susy (v)
+// ----  
+@import "susy";
+@import "compass";
+@import "breakpoint";
+@import "_fonts";
+@import "_reset";
+@import "_normalize";
+
+//@import url(http://allfont.ru/allfont.css?fonts=open-sans);
+// Susy custom settings 
+$susy: ( columns: 12, container: 1000px, gutters: 1/10, global-box-sizing: border-box, debug: (image: show));
+@include border-box-sizing;
+$color_1: #d52a77;
+$color_2: #87827c;
+$color_2_hover: #615c56;
+$color_3: #acd8d9;
+$color_3_hover: #89c3c5;
+$color_4: #f5f3f2;
+
+%teni_container {
+    box-shadow: 0 0 11px -3px $color_2;
+}
+
+.container {
+    @include breakpoint((max-width: 900px)) {
+        display: block;
+    }
+    @include container;
+    background: none;
+    position: relative;
+}
