@@ -1,35 +1,73 @@
-// ----
 // Sass (v3.3.6)
-// Compass (v)
-// Susy (v)
-// ----  
-@import "susy";
-@import "compass";
-@import "breakpoint";
-@import "_fonts";
 @import "_reset";
 @import "_normalize";
-
-//@import url(http://allfont.ru/allfont.css?fonts=open-sans);
-// Susy custom settings 
-$susy: ( columns: 12, container: 1000px, gutters: 1/10, global-box-sizing: border-box, debug: (image: show));
-@include border-box-sizing;
-$color_1: #d52a77;
-$color_2: #87827c;
-$color_2_hover: #615c56;
-$color_3: #acd8d9;
-$color_3_hover: #89c3c5;
-$color_4: #f5f3f2;
-
-%teni_container {
-    box-shadow: 0 0 11px -3px $color_2;
+* {
+    box-sizing: border-box;
+    vertical-align: top;
+    -webkit-transition: width height 0.5s all;
+    -moz-transition: width height 0.5s all;
+    transition: width height 0.5s;
 }
 
-.container {
-    @include breakpoint((max-width: 900px)) {
-        display: block;
+.mosaic-container {
+    table {
+        border-spacing: inherit;
+        transform-origin: 0 0;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        tr {
+            border-spacing: inherit;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            td {
+                width: 20px;
+                height: 20px;
+                border-spacing: inherit;
+                padding: 0;
+                margin: 0;
+                border: 0;
+                img {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            &:nth-child(2n+1) td:nth-child(2n) {
+                img {
+                    transform: scaleX(-1);
+                }
+            }
+            &:nth-child(2n) td:nth-child(2n+1) {
+                transform: scaleY(-1);
+            }
+            &:nth-child(2n) td:nth-child(2n) {
+                transform: rotate(180deg);
+            }
+        }
     }
-    @include container;
-    background: none;
-    position: relative;
+    .zoom_block{
+        &:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+    }
+    .block_rezult {
+        float: left;
+        width: 300px;
+        height: 300px;
+        overflow: auto;
+        &:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+    }
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
 }
